@@ -5,7 +5,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 MODEL_PATH = "Parth136/isl-text2gloss-mt5"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
-model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_PATH)
+model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_PATH, low_cpu_mem_usage=True)
 
 def generate_gloss(sentence, max_length=64):
     inputs = tokenizer("translate to ISL gloss: " + sentence, return_tensors="pt")
